@@ -1,39 +1,34 @@
 import type React from "react"
-import "@/app/globals.css"
-import { Inter, Playfair_Display } from "next/font/google"
 import type { Metadata } from "next"
+import { Space_Grotesk, DM_Sans } from "next/font/google"
+import "./globals.css"
 
-import { ThemeProvider } from "@/components/theme-provider"
-
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
 })
 
-const playfair = Playfair_Display({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "700"],
 })
 
 export const metadata: Metadata = {
   title: "Blue - Transformation Digitale & Solutions Numériques",
-  description:
-    "Blue vous accompagne dans votre transformation digitale. Création de sites web, solutions cloud, et conseil en innovation numérique.",
+  description: "Votre partenaire en transformation digitale et solutions numériques",
     generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="fr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+      <body className="font-mono antialiased">{children}</body>
     </html>
   )
 }
