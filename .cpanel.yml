@@ -1,0 +1,18 @@
+---
+deployment:
+  tasks:
+    - export REPO=/home/USER/repos/blue-website
+    - export APP=/home/USER/apps/blue-website
+    - /bin/mkdir -p $APP
+    # Installer / build dans le repo
+    - cd $REPO && /usr/bin/npm ci
+    - cd $REPO && /usr/bin/npm run build
+    # Publier vers l'app dir (on évite .git, node_modules si on reconstruit côté app)
+    - /usr/bin/rsync -a --delete \
+        --exclude=".git" \
+        --exclude=".cpanel.yml" \
+        $REPO/ $APP/
+    # Installer les deps au dossier de RUN (utile si Passenger relance ici)
+    - cd $APP && /usr/bin/npm ci --omit=dev
+    # Redémarrer l'app Passenger
+    - /usr/bin/touch $APP/tmp/restart.txt
