@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
@@ -44,7 +44,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid gap-8 lg:grid-cols-[minmax(280px,360px)_minmax(0,1fr)] xl:gap-12 max-w-6xl mx-auto items-stretch">
           <motion.div
             className="space-y-6"
             initial="hidden"
@@ -60,56 +60,79 @@ export function Contact() {
               },
             }}
           >
-            {[
-              {
-                icon: Mail,
-                title: "Email",
-                content: "contact@blue.com",
-                href: "mailto:contact@blue.com",
-              },
-              {
-                icon: Phone,
-                title: "Téléphone",
-                content: "+243 000 000 000",
-                href: "tel:+243000000000",
-              },
-              {
-                icon: MapPin,
-                title: "Adresse",
-                content: "Kinshasa, RDC",
-                href: null,
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, x: -30 },
-                  visible: { opacity: 1, x: 0 },
-                }}
-              >
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/20 bg-card/80 backdrop-blur-sm">
-                  <CardHeader>
-                    <motion.div
-                      className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-2"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      <item.icon className="h-6 w-6 text-primary" />
-                    </motion.div>
-                    <CardTitle className="font-sans text-lg">{item.title}</CardTitle>
-                    <CardDescription>
+            <Card className="flex h-full flex-col border-2 bg-gradient-to-br from-primary/10 via-background to-background shadow-lg">
+              <CardHeader className="space-y-3">
+                <span className="px-3 py-1 text-xs uppercase tracking-wide font-semibold bg-primary/20 text-primary rounded-full w-fit">
+                  Contactez-nous
+                </span>
+                <CardTitle className="font-heading text-2xl leading-tight">
+                  Restons en contact pour votre prochaine transformation digitale
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Une équipe dédiée répond aux projets du lundi au samedi, 9h-18h (UTC+1). Choisissez le canal qui vous
+                  convient le mieux.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1 space-y-4">
+                {[
+                  {
+                    icon: Mail,
+                    title: "Email",
+                    content: "contact@blue.com",
+                    href: "mailto:contact@blue.com",
+                  },
+                  {
+                    icon: Phone,
+                    title: "Téléphone",
+                    content: "+243 000 000 000",
+                    href: "tel:+243000000000",
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Adresse",
+                    content: "Kinshasa, RDC",
+                    href: "https://maps.app.goo.gl/2uLkC6Cd1jGZe6gF6",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, x: -30 },
+                      visible: { opacity: 1, x: 0 },
+                    }}
+                    className="group flex items-start gap-4 rounded-2xl border border-primary/10 bg-background/80 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                      <item.icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-sans text-sm uppercase tracking-wide text-muted-foreground">{item.title}</p>
                       {item.href ? (
-                        <a href={item.href} className="hover:text-primary transition-colors">
+                        <a href={item.href} className="text-lg font-semibold transition-colors hover:text-primary">
                           {item.content}
                         </a>
                       ) : (
-                        item.content
+                        <p className="text-lg font-semibold">{item.content}</p>
                       )}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-            ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </CardContent>
+              <CardFooter className="mt-auto flex flex-col gap-3 border-t border-primary/10 bg-background/70 p-6">
+                <p className="text-sm text-muted-foreground">
+                  Besoin d’un rendez-vous rapide ? Envoyez-nous votre message et nous planifierons un appel avec un
+                  consultant senior.
+                </p>
+                <div className="flex w-full flex-wrap gap-3">
+                  <Button asChild variant="default" className="flex-1 min-w-[180px] font-sans">
+                    <a href="mailto:contact@blue.com">Écrire un email</a>
+                  </Button>
+                  <Button asChild variant="outline" className="flex-1 min-w-[180px] border-primary/40 text-primary">
+                    <a href="tel:+243000000000">Appeler maintenant</a>
+                  </Button>
+                </div>
+              </CardFooter>
+            </Card>
           </motion.div>
 
           <motion.div
@@ -118,12 +141,12 @@ export function Contact() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="lg:col-span-2 bg-card/80 backdrop-blur-sm border-2">
+            <Card className="flex h-full flex-col border-2 bg-card/80 backdrop-blur-sm lg:col-span-2">
               <CardHeader>
                 <CardTitle className="font-sans text-2xl">Envoyez-nous un message</CardTitle>
                 <CardDescription>Nous vous répondrons dans les plus brefs délais</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-1">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <motion.div
@@ -220,6 +243,33 @@ export function Contact() {
             </Card>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8 }}
+          className="mt-20 max-w-6xl mx-auto"
+        >
+          <Card className="overflow-hidden border-2 bg-card/80 backdrop-blur-sm">
+            <CardHeader className="space-y-2">
+              <CardTitle className="font-heading text-2xl">Nous situer</CardTitle>
+              <CardDescription>
+                Retrouvez-nous dans le cœur de Kinshasa. Nous accueillons les rendez-vous physiques sur demande.
+              </CardDescription>
+            </CardHeader>
+            <div className="aspect-[16/6] w-full">
+              <iframe
+                title="Localisation Blue"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63554.37157411652!2d15.266293039040206!3d-4.331801932118651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a310e42fa0b3b%3A0x2ad6de3449d9b634!2sKinshasa!5e0!3m2!1sfr!2scd!4v1731048000000!5m2!1sfr!2scd"
+                className="h-full w-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </Card>
+        </motion.div>
       </div>
     </section>
   )

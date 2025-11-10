@@ -1,12 +1,12 @@
 import { Header } from "@/components/header"
-import { About } from "@/components/about"
+import { Payment } from "@/components/payment"
 import { Footer } from "@/components/footer"
 
-export default function AboutPage() {
+export default function PaymentPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <About />
+      <Payment />
       <Footer />
     </main>
   )

@@ -1,7 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, DM_Sans } from "next/font/google"
+import { Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { LanguageProvider } from "@/components/language-provider"
+
+const jakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  weight: ["400", "500", "600", "700"],
+})
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -9,9 +17,9 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 })
 
-const dmSans = DM_Sans({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-jetbrains-mono",
   weight: ["400", "500", "700"],
 })
 
@@ -27,8 +35,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
-      <body className="font-mono antialiased">{children}</body>
+    <html
+      lang="fr"
+      className={`${jakartaSans.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="font-sans antialiased">
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

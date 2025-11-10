@@ -75,8 +75,10 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-space-grotesk);
-  --font-mono: var(--font-dm-sans);
+  --font-sans: var(--font-plus-jakarta);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-code: var(--font-jetbrains-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -120,6 +122,203 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+  code,
+  pre {
+    font-family: var(--font-code);
+  }
+}
+
+@layer components {
+  .magic-button {
+    --magic-radius: 9999px;
+    --magic-transition: 0.3s ease-in-out;
+    --magic-active: var(--active, 0);
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    transform-origin: center;
+    padding: 0.9rem 1.9rem;
+    border-radius: var(--magic-radius);
+    border: 1px solid hsla(210 40% 98% / 0.12);
+    background-color: hsla(222 47% 11% / 0.6);
+    color: hsl(210 40% 98%);
+    transition:
+      background-color var(--magic-transition),
+      border-color var(--magic-transition),
+      transform var(--magic-transition),
+      box-shadow var(--magic-transition);
+    box-shadow: 0 12px 24px -18px hsla(220 60% 50% / 0.4);
+  }
+
+  .magic-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(222 100% 63% / 0.9);
+    opacity: var(--magic-active);
+    border-radius: var(--magic-radius);
+    box-shadow:
+      inset 0 0.5px hsl(0 0% 100% / 0.85),
+      inset 0 -1px 2px 0 hsl(0 0% 0% / 0.65),
+      0 4px 14px -6px hsla(222 100% 60% / 0.6),
+      0 0 0 calc(var(--magic-active) * 0.375rem) hsl(260 97% 50% / 0.8);
+    transition:
+      opacity var(--magic-transition),
+      box-shadow var(--magic-transition);
+    z-index: 0;
+  }
+
+  .magic-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(260 97% 61% / 0.75);
+    background-image:
+      radial-gradient(at 51% 89%, hsla(266 45% 74% / 1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(266 36% 60% / 1) 0px, transparent 50%),
+      radial-gradient(at 22% 91%, hsla(266 36% 60% / 1) 0px, transparent 50%);
+    background-position: top;
+    opacity: var(--magic-active);
+    border-radius: var(--magic-radius);
+    transition: opacity var(--magic-transition);
+    z-index: 2;
+  }
+
+  .magic-button:focus-visible,
+  .magic-button:hover {
+    --active: 1;
+    transform: translateY(-1px);
+    border-color: hsla(260 97% 60% / 0.5);
+  }
+
+  .magic-button:active {
+    transform: translateY(0);
+  }
+
+  .magic-button[data-variant='ghost'] {
+    background-color: hsla(0 0% 100% / 0.04);
+    border-color: hsla(0 0% 100% / 0.16);
+    color: hsl(210 40% 98%);
+    box-shadow: 0 10px 20px -16px hsla(210 60% 10% / 0.45);
+  }
+
+  .magic-button[data-variant='ghost']::before {
+    background-color: hsla(0 0% 100% / 0.22);
+  }
+
+  .magic-button[data-variant='ghost']::after {
+    background: linear-gradient(135deg, hsla(0 0% 100% / 0.08), hsla(0 0% 100% / 0.16));
+  }
+
+  .magic-button__dots {
+    --size-border: calc(100% + 2px);
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: var(--size-border);
+    height: var(--size-border);
+    background-color: transparent;
+    border-radius: var(--magic-radius);
+    z-index: -10;
+  }
+
+  .magic-button__dots::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+    mask: linear-gradient(transparent 0%, white 120%);
+    animation: magic-rotate 2s linear infinite;
+    opacity: var(--magic-active);
+  }
+
+  .magic-button__icon {
+    position: relative;
+    z-index: 10;
+    width: 2rem;
+    height: 2rem;
+    color: hsl(0 0% 100%);
+    transition: transform var(--magic-transition);
+  }
+
+  .magic-button:hover .magic-button__icon,
+  .magic-button:focus-visible .magic-button__icon {
+    animation: magic-icon 1.5s linear 0.5s infinite;
+  }
+
+  .magic-button__text {
+    position: relative;
+    z-index: 10;
+    font-size: 1rem;
+    font-weight: 600;
+    color: hsl(210 40% 98%);
+    transition: color var(--magic-transition);
+  }
+
+  .magic-button[data-variant='ghost'] .magic-button__text {
+    color: hsl(210 40% 98%);
+  }
+
+  .magic-button[data-variant='ghost'] .magic-button__icon {
+    color: hsl(0 0% 100%);
+  }
+
+  .magic-button:hover .magic-button__text,
+  .magic-button:focus-visible .magic-button__text {
+    color: transparent;
+    background-image: linear-gradient(
+      90deg,
+      hsla(0 0% 100% / 1) 0%,
+      hsla(0 0% 100% / 0) 120%
+    );
+    background-clip: text;
+  }
+
+  @keyframes magic-rotate {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes magic-icon {
+    0%,
+    34%,
+    71%,
+    100% {
+      transform: scale(1);
+    }
+    17% {
+      transform: scale(1.15);
+    }
+    49% {
+      transform: scale(1.25);
+    }
+    83% {
+      transform: scale(1.15);
+    }
   }
 }
