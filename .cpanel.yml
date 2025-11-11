@@ -4,18 +4,18 @@ deployment:
     - export REPO=/home/bluerdcc/repositories/blue
     - export APP=/home/bluerdcc/apps/blue
 
-    # 1) Build dans le dossier du repo
+    # Build dans le dépôt
     - cd $REPO && /usr/bin/npm ci
     - cd $REPO && /usr/bin/npm run build
 
-    # 2) Publie le code et le build vers le dossier de RUN de l'app Node
+    # Publier vers le dossier d'exécution de l'app Node
     - /bin/mkdir -p $APP
     - /usr/bin/rsync -a --delete \
         --exclude=".git" \
         --exclude=".cpanel.yml" \
         $REPO/ $APP/
 
-    # 3) Installer les deps côté RUN (prod) puis redémarrer Passenger
+    # Installer en prod + redémarrer Passenger
     - cd $APP && /usr/bin/npm ci --omit=dev
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt
