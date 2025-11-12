@@ -20,9 +20,6 @@ deployment:
     - /usr/bin/rsync -a --delete $REPO/public/ $APP/public/
     - /usr/bin/rsync -a $REPO/app.js $APP/app.js
 
-    # Install prod deps if standalone still expects any (usually minimal)
-    - cd $APP && /usr/bin/npm ci --omit=dev || true
-
     # Restart Passenger
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt
