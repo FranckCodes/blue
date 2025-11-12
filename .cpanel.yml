@@ -4,18 +4,25 @@ deployment:
     - export REPO=/home/bluerdcc/repositories/blue
     - export APP=/home/bluerdcc/apps/blue
 
-    # Build dans le dépôt
+    # Build in the repo
     - cd $REPO && /usr/bin/npm ci
     - cd $REPO && /usr/bin/npm run build
 
-    # Publier vers le dossier d'exécution de l'app Node
+    # Publish minimal runtime bundle
     - /bin/mkdir -p $APP
     - /usr/bin/rsync -a --delete \
         --exclude=".git" \
+        --exclude="node_modules" \
+        --exclude="**/*.map" \
         --exclude=".cpanel.yml" \
-        $REPO/ $APP/
+        $REPO/.next/standalone/ $APP/
+    - /usr/bin/rsync -a --delete $REPO/.next/static/ $APP/.next/static/
+    - /usr/bin/rsync -a --delete $REPO/public/ $APP/public/
+    - /usr/bin/rsync -a $REPO/app.js $APP/app.js
 
-    # Installer en prod + redémarrer Passenger
-    - cd $APP && /usr/bin/npm ci --omit=dev
+    # Install prod deps if standalone still expects any (usually minimal)
+    - cd $APP && /usr/bin/npm ci --omit=dev || true
+
+    # Restart Passenger
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt

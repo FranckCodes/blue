@@ -1,16 +1,10 @@
-// app.js à la racine du dossier de RUN (pas forcément le repo)
-const next = require('next');
-const http = require('http');
+// app.js — démarre le serveur Next standalone (plus léger)
+const path = require('path');
 
-const port = process.env.PORT || 3000;
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
+// Passenger définit généralement PORT ; par sécurité on met un défaut
+process.env.PORT = process.env.PORT || '3000';
+// Assure le mode prod si tu lances "start"
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
-app.prepare().then(() => {
-  http.createServer((req, res) => {
-    handle(req, res);
-  }).listen(port, () => {
-    console.log(`Next.js running on :${port}`);
-  });
-});
+// Lance le serveur pré-compilé de Next (standalone)
+require(path.join(__dirname, '.next', 'standalone', 'server.js'));
