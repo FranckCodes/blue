@@ -3,12 +3,11 @@ deployment:
   tasks:
     - export APP=/home/bluerdcc/repositories/blue
 
-    # Install des dépendances dans le dossier de l'app
-    - cd $APP && /usr/bin/npm install
+    # Installer les dépendances (au cas où)
+    - cd $APP && /usr/bin/npm install --omit=dev
 
-    # Build Next (standalone)
-    - cd $APP && /usr/bin/npm run build
+    # PAS de npm run build ici : le build est déjà fait en local et commité
 
-    # Redémarrer Passenger (Node app)
+    # Redémarrer Passenger / l'app Node
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt
