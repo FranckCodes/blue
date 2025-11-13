@@ -10,8 +10,8 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // 🔴 Clé pour la version statique
-  output: 'export',
+  // 🔴 On revient en standalone (SSR côté serveur)
+  output: 'standalone',
 
   experimental: {
     serverActions: { bodySizeLimit: '10mb' },

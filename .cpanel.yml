@@ -1,13 +1,25 @@
 ---
 deployment:
   tasks:
-    - export APP=/home/bluerdcc/repositories/blue
+    - export REPO=/home/bluerdcc/repositories/blue
+    - export APP=/home/bluerdcc/apps/blue
 
-    # Installer les dépendances (au cas où)
-    - cd $APP && /usr/bin/npm install --omit=dev
+    # 1) Build dans le dépôt
+    - cd $REPO && /usr/bin/npm ci
+    - cd $REPO && /usr/bin/npm run build
 
-    # PAS de npm run build ici : le build est déjà fait en local et commité
+    # 2) Publier le bundle standalone vers le dossier de RUN
+    - /bin/mkdir -p $APP
+    - /usr/bin/rsync -a --delete \
+        --exclude=".git" \
+        --exclude="node_modules" \
+        --exclude="**/*.map" \
+        --exclude=".cpanel.yml" \
+        $REPO/.next/standalone/ $APP/
+    - /usr/bin/rsync -a --delete $REPO/.next/static/ $APP/.next/static/
+    - /usr/bin/rsync -a --delete $REPO/public/ $APP/public/
+    - /usr/bin/rsync -a $REPO/app.js $APP/app.js
 
-    # Redémarrer Passenger / l'app Node
+    # 3) Redémarrer Passenger
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt
