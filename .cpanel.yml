@@ -1,25 +1,14 @@
 ---
 deployment:
   tasks:
-    - export REPO=/home/bluerdcc/repositories/blue
-    - export APP=/home/bluerdcc/apps/blue
+    - export APP=/home/bluerdcc/repositories/blue
 
-    # Build in the repo
-    - cd $REPO && /usr/bin/npm ci
-    - cd $REPO && /usr/bin/npm run build
+    # Install des dépendances dans le dossier de l'app
+    - cd $APP && /usr/bin/npm install
 
-    # Publish minimal runtime bundle
-    - /bin/mkdir -p $APP
-    - /usr/bin/rsync -a --delete \
-        --exclude=".git" \
-        --exclude="node_modules" \
-        --exclude="**/*.map" \
-        --exclude=".cpanel.yml" \
-        $REPO/.next/standalone/ $APP/
-    - /usr/bin/rsync -a --delete $REPO/.next/static/ $APP/.next/static/
-    - /usr/bin/rsync -a --delete $REPO/public/ $APP/public/
-    - /usr/bin/rsync -a $REPO/app.js $APP/app.js
+    # Build Next (standalone)
+    - cd $APP && /usr/bin/npm run build
 
-    # Restart Passenger
+    # Redémarrer Passenger (Node app)
     - /bin/mkdir -p $APP/tmp
     - /usr/bin/touch $APP/tmp/restart.txt
