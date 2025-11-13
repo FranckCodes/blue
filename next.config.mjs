@@ -10,7 +10,7 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // 🔴 On revient en standalone (SSR côté serveur)
+  // IMPORTANT : on veut un bundle standalone pour le serveur
   output: 'standalone',
 
   experimental: {
