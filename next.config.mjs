@@ -9,8 +9,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Important pour le mode standalone en prod
-  output: 'standalone',
+
+  // 🔴 Clé pour la version statique
+  output: 'export',
 
   experimental: {
     serverActions: { bodySizeLimit: '10mb' },
