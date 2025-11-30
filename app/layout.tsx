@@ -26,7 +26,9 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Blue - Transformation Digitale & Solutions Numériques",
   description: "Votre partenaire en transformation digitale et solutions numériques",
-    generator: 'v0.app'
+  icons: {
+    icon: "/blue-logo.svg",
+  },
 }
 
 export default function RootLayout({
