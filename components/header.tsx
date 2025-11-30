@@ -29,9 +29,9 @@ export function Header() {
                 <Phone className="h-4 w-4" />
                 <span>+243 000 000 000</span>
               </a>
-              <a href="mailto:contact@blue.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <a href="mailto:info@bluerdc.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <Mail className="h-4 w-4" />
-                <span>contact@blue.com</span>
+                <span>info@bluerdc.com</span>
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -67,14 +67,14 @@ export function Header() {
               <Image
                 src="/blue-logo.svg"
                 alt="Logo de Blue"
-                width={32}
-                height={32}
+                width={24}
+                height={24}
                 priority
-                className="h-8 w-8"
+                className="h-6 w-6"
               />
               <div className="flex flex-col leading-tight">
                 <span className="font-sans font-bold text-xl">Blue</span>
-                <span className="text-xs text-muted-foreground uppercase tracking-[0.18em]">
+                <span className="text-xs text-muted-foreground lowercase tracking-[0.18em] font-heading">
                   innove and change
                 </span>
               </div>

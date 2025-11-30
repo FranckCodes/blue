@@ -8,22 +8,28 @@ import { motion } from "framer-motion"
 
 const projects = [
   {
-    title: "Site vitrine pour PME",
-    description: "Design moderne et responsive pour une entreprise locale",
+    title: "AES Consulting",
+    description: "Site web pour cabinet de conseil en environnement et développement durable",
     category: "Site vitrine",
     image: "/modern-business-website.png",
+    url: "https://africanesc.co.uk",
+    contact: "info@africanesc.co.uk",
   },
   {
-    title: "Boutique en ligne",
-    description: "E-commerce sécurisé avec paiement en ligne intégré",
-    category: "E-commerce",
+    title: "Victoria Corporation",
+    description: "Plateforme web pour entreprise leader en logistique, mines et consultance",
+    category: "Site vitrine",
     image: "/ecommerce-online-store-interface.jpg",
+    url: "https://vivicorp.net",
+    contact: "Info@vivicorp.net",
   },
   {
-    title: "Application web interne",
-    description: "Outils numériques pour la gestion d'entreprise",
+    title: "NLC Events",
+    description: "Site web pour la réservation et gestion d'événements",
     category: "Application",
     image: "/business-management-dashboard.png",
+    url: "https://nlcevents.org",
+    contact: "info@bluerdc.com",
   },
 ]
 
@@ -97,8 +103,11 @@ export function Portfolio() {
                     <Button
                       size="icon"
                       className="h-10 w-10 rounded-full bg-background/90 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground shadow-lg"
+                      asChild
                     >
-                      <ExternalLink className="h-5 w-5" />
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-5 w-5" />
+                      </a>
                     </Button>
                   </motion.div>
                 </div>
@@ -113,6 +122,11 @@ export function Portfolio() {
                     {project.title}
                   </CardTitle>
                   <CardDescription className="leading-relaxed">{project.description}</CardDescription>
+                  {project.contact && (
+                    <div className="text-xs text-muted-foreground mt-2">
+                      <strong>Contact:</strong> {project.contact}
+                    </div>
+                  )}
                 </CardHeader>
               </Card>
             </motion.div>

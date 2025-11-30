@@ -170,24 +170,22 @@ export function Hero() {
               <MagicButton
                 icon={PackageCheck}
                 aria-label={t.hero.cta1}
-                variant="primary"
-                className="w-full justify-center sm:w-[230px]"
+                className="magic-button--no-hover w-full justify-center sm:w-[230px]"
               >
                 {t.hero.cta1}
               </MagicButton>
               <MagicButton
                 icon={Sparkles}
                 aria-label={t.hero.cta2}
-                variant="ghost"
-                className="w-full justify-center sm:w-[230px]"
+                className="magic-button--no-hover w-full justify-center sm:w-[230px]"
               >
                 {t.hero.cta2}
               </MagicButton>
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="relative flex h-full items-center justify-center"
+          <motion.div 
+            className="relative hidden md:flex  h-full items-center justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}

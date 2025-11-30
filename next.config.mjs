@@ -10,8 +10,8 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // IMPORTANT : on veut un bundle standalone pour le serveur
-  output: 'standalone',
+  // 🔴 Clé pour générer un site 100% statique
+  output: 'export',
 
   experimental: {
     serverActions: { bodySizeLimit: '10mb' },
