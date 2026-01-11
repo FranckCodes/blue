@@ -4,78 +4,127 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/components/language-provider"
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
-
 export function Trusted() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <motion.div
-          className="rounded-3xl bg-primary/90 px-6 py-12 text-primary-foreground shadow-2xl md:px-12"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.h2
-            className="text-center font-sans text-lg font-semibold uppercase tracking-[0.28em]"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {t.trusted.title}
-          </motion.h2>
-          <motion.p
-            className="mt-4 text-center text-base font-medium text-primary-foreground/80"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            {t.trusted.subtitle}
-          </motion.p>
+    <section className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
 
-          <motion.div
-            className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.08, delayChildren: 0.15 },
-              },
-            }}
-          >
-            {t.trusted.companies.map((company) => (
+      <div className="container relative mx-auto px-4">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-medium tracking-widest uppercase text-primary/60 border border-primary/10 rounded-full">
+            {t.trusted.title}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-medium text-foreground">{t.trusted.subtitle}</h2>
+        </motion.div>
+
+        <div className="relative">
+          {/* Gradient masks for smooth fade effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+          {/* First row - scrolling left */}
+          <div className="flex overflow-hidden mb-6">
+            <motion.div
+              className="flex gap-8 md:gap-12"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 25,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Double the logos for seamless loop */}
+              {[...t.trusted.companies, ...t.trusted.companies].map((company, index) => (
+                <div key={`${company.name}-${index}`} className="flex-shrink-0 group">
+                  <div className="flex items-center justify-center w-40 md:w-48 h-20 md:h-24 rounded-xl bg-foreground/[0.03] border border-foreground/[0.06] transition-all duration-300 hover:bg-foreground/[0.06] hover:border-foreground/[0.1]">
+                    <Image
+                      src={company.logo || "/placeholder.svg"}
+                      alt={company.name}
+                      width={120}
+                      height={48}
+                      className="h-8 md:h-10 w-auto object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-70 group-hover:grayscale-0"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Second row - scrolling right (reverse) */}
+          <div className="flex overflow-hidden">
+            <motion.div
+              className="flex gap-8 md:gap-12"
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* Double the logos for seamless loop - reversed order */}
+              {[...t.trusted.companies.slice().reverse(), ...t.trusted.companies.slice().reverse()].map(
+                (company, index) => (
+                  <div key={`${company.name}-reverse-${index}`} className="flex-shrink-0 group">
+                    <div className="flex items-center justify-center w-40 md:w-48 h-20 md:h-24 rounded-xl bg-foreground/[0.03] border border-foreground/[0.06] transition-all duration-300 hover:bg-foreground/[0.06] hover:border-foreground/[0.1]">
+                      <Image
+                        src={company.logo || "/placeholder.svg"}
+                        alt={company.name}
+                        width={120}
+                        height={48}
+                        className="h-8 md:h-10 w-auto object-contain opacity-40 grayscale transition-all duration-300 group-hover:opacity-70 group-hover:grayscale-0"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                ),
+              )}
+            </motion.div>
+          </div>
+        </div>
+
+        <motion.div
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {[
+            { value: "50+", label: "Clients satisfaits" },
+            { value: "120+", label: "Projets livrés" },
+            { value: "5", label: "Années d'expérience" },
+            { value: "98%", label: "Taux de satisfaction" },
+          ].map((stat, index) => (
+            <div key={stat.label} className="text-center">
               <motion.div
-                key={company.name}
-                className="flex items-center justify-center rounded-2xl bg-primary-foreground/5 px-4 py-4 backdrop-blur transition hover:bg-primary-foreground/10"
-                variants={fadeInUp}
+                className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
               >
-                <Image
-                  src={company.logo}
-                  alt={company.name}
-                  width={120}
-                  height={48}
-                  className="h-10 w-auto object-contain"
-                  loading="lazy"
-                />
+                {stat.value}
               </motion.div>
-            ))}
-          </motion.div>
+              <div className="mt-2 text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
   )
 }
-
