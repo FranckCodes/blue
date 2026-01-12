@@ -170,19 +170,6 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.7 }}
             >
-<<<<<<< HEAD
-              <MagicButton
-                icon={PackageCheck}
-                aria-label={t.hero.cta1}
-                className="magic-button--no-hover w-full justify-center sm:w-[230px]"
-              >
-                {t.hero.cta1}
-              </MagicButton>
-              <MagicButton
-                icon={Sparkles}
-                aria-label={t.hero.cta2}
-                className="magic-button--no-hover w-full justify-center sm:w-[230px]"
-=======
               <Link href="/quote">
                 <Button
                   size="lg"
@@ -200,7 +187,6 @@ export function Hero() {
                 variant="ghost"
                 size="lg"
                 className="group gap-2 px-8 py-6 text-base font-medium text-white transition-colors hover:bg-white/5"
->>>>>>> dev
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
                   <Play className="h-4 w-4 fill-current text-primary" />
@@ -225,18 +211,11 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-<<<<<<< HEAD
-          <motion.div 
-            className="relative hidden md:flex  h-full items-center justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-=======
           {/* Right Content - Tech Showcase */}
           <motion.div
             className="relative hidden lg:block"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
->>>>>>> dev
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             {/* Main Card */}

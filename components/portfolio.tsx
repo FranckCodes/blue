@@ -16,30 +16,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-<<<<<<< HEAD
-    title: "AES Consulting",
-    description: "Site web pour cabinet de conseil en environnement et développement durable",
-    category: "Site vitrine",
-    image: "/modern-business-website.png",
-    url: "https://africanesc.co.uk",
-    contact: "info@africanesc.co.uk",
-  },
-  {
-    title: "Victoria Corporation",
-    description: "Plateforme web pour entreprise leader en logistique, mines et consultance",
-    category: "Site vitrine",
-    image: "/ecommerce-online-store-interface.jpg",
-    url: "https://vivicorp.net",
-    contact: "Info@vivicorp.net",
-  },
-  {
-    title: "NLC Events",
-    description: "Site web pour la réservation et gestion d'événements",
-    category: "Application",
-    image: "/business-management-dashboard.png",
-    url: "https://nlcevents.org",
-    contact: "info@bluerdc.com",
-=======
     title: "Juste Deux Coeurs",
     description: "Plateforme de rencontres et relations",
     category: "Application Web",
@@ -155,7 +131,6 @@ const projects: Project[] = [
     image: "/projet_preview_image/fédéral.png",
     technologies: ["Next.js", "Sanity CMS"],
     year: "2023",
->>>>>>> dev
   },
 ]
 
@@ -311,69 +286,7 @@ export function Portfolio() {
 
         {/* Category filters */}
         <motion.div
-<<<<<<< HEAD
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {projects.map((project, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/20 bg-card/80 backdrop-blur-sm">
-                <div className="aspect-video overflow-hidden bg-muted relative">
-                  <motion.img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    className="absolute top-4 right-4 opacity-0 group-hover:opacity-100"
-                    initial={{ scale: 0 }}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <Button
-                      size="icon"
-                      className="h-10 w-10 rounded-full bg-background/90 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground shadow-lg"
-                      asChild
-                    >
-                      <a href={project.url} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-5 w-5" />
-                      </a>
-                    </Button>
-                  </motion.div>
-                </div>
-                <CardHeader className="space-y-3">
-                  <Badge
-                    variant="secondary"
-                    className="w-fit bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
-                  >
-                    {project.category}
-                  </Badge>
-                  <CardTitle className="font-sans text-xl group-hover:text-primary transition-colors">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="leading-relaxed">{project.description}</CardDescription>
-                  {project.contact && (
-                    <div className="text-xs text-muted-foreground mt-2">
-                      <strong>Contact:</strong> {project.contact}
-                    </div>
-                  )}
-                </CardHeader>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="text-center mt-12"
-=======
           className="flex flex-wrap gap-2 mb-12"
->>>>>>> dev
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
