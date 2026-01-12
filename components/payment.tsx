@@ -106,7 +106,7 @@ export function Payment() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {paymentMethods.map((method, index) => (
-            <motion.div key={index} variants={itemVariants} className="group relative">
+            <motion.div key={index}  className="group relative">
               <div className="relative h-full p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/80">
                 {/* Badge */}
                 <span className="absolute top-6 right-6 text-xs font-medium text-primary/80 bg-primary/10 px-3 py-1 rounded-full">
@@ -187,7 +187,6 @@ export function Payment() {
         >
           {/* Conditions */}
           <motion.div
-            variants={itemVariants}
             className="p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -219,7 +218,6 @@ export function Payment() {
 
           {/* Guarantees */}
           <motion.div
-            variants={itemVariants}
             className="p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3 mb-6">
