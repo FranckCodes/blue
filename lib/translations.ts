@@ -210,7 +210,7 @@ export const translations = {
       title: "Vous avez un projet ? Parlons-en !",
       subtitle: "Remplissez le formulaire et notre équipe vous répondra rapidement",
       info: [
-        { title: "Email", content: "contact@blue.com" },
+        { title: "Email", content: "info@bluerdc.com" },
         { title: "Téléphone", content: "+243 000 000 000" },
         { title: "Adresse", content: "Kinshasa, RDC" },
       ],
@@ -526,7 +526,7 @@ export const translations = {
       title: "Have a project? Let's talk!",
       subtitle: "Fill out the form and our team will respond quickly",
       info: [
-        { title: "Email", content: "contact@blue.com" },
+        { title: "Email", content: "info@bluerdc.com" },
         { title: "Phone", content: "+243 000 000 000" },
         { title: "Address", content: "Kinshasa, DRC" },
       ],
