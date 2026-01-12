@@ -65,7 +65,7 @@ export function Services() {
             {t.services.title.split(" ").map((word, i) => (
               <span key={i}>
                 {i === 1 ? (
-                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400  bg-clip-text text-transparent">
                     {word}{" "}
                   </span>
                 ) : (
@@ -118,7 +118,7 @@ export function Services() {
                   />
 
                   {/* Service number */}
-                  <div className="absolute top-6 right-6 text-7xl font-bold text-muted/10 select-none">
+                  <div className="absolute top-6 right-6 text-7xl font-bold text-black/10 dark:text-white/10 select-none">
                     0{index + 1}
                   </div>
 
