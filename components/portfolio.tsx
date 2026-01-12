@@ -365,7 +365,7 @@ export function Portfolio() {
               </div>
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:bg-accent transition-colors duration-300 shrink-0"
+                className="group inline-flex items-center  gap-3 px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:bg-accent hover:text-foreground transition-colors duration-300 shrink-0"
               >
                 Demander un devis
                 <ArrowUpRight className="h-5 w-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

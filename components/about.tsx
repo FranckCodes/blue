@@ -71,7 +71,7 @@ const teamMembers = [
 
 export function About() {
   return (
-    <section id="a-propos" className="py-20 md:py-32">
+    <section id="a-propos" className="md:py-32">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <VideoPreview />

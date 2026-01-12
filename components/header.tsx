@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Menu, Phone, Mail, MapPin, X, Moon, Sun, Languages } from "lucide-react"
+import { Menu, Phone, Mail, MapPin, X, Moon, Sun, Languages, ArrowUpRight } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/components/theme-provider"
@@ -52,7 +52,7 @@ export function Header() {
 
       <div className="container mx-auto px-4">
         <motion.div
-          className="flex items-center justify-between h-16"
+          className="flex items-center justify-between h-20 py-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -152,7 +152,10 @@ export function Header() {
             </motion.button>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.9 }}>
-              <Button className="font-sans">{t.nav.getQuote}</Button>
+              <Button className="font-sans">
+                {t.nav.getQuote}
+                <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
             </motion.div>
           </div>
         </motion.div>
@@ -226,7 +229,10 @@ export function Header() {
                     visible: { opacity: 1, x: 0 },
                   }}
                 >
-                  <Button className="font-sans w-full">{t.nav.getQuote}</Button>
+                  <Button className="font-sans w-full">
+                    {t.nav.getQuote}
+                    <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Button>
                 </motion.div>
               </motion.div>
             </motion.nav>
