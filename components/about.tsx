@@ -6,6 +6,13 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import Image from "next/image"
 
 const values = ["Innovation constante", "Transparence totale", "Proximité client", "Excellence technique"]
@@ -64,7 +71,7 @@ const teamMembers = [
 
 export function About() {
   return (
-    <section id="a-propos" className="py-20 md:py-32">
+    <section id="a-propos" className="md:py-32">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <VideoPreview />
@@ -187,8 +194,9 @@ export function About() {
             />
           </motion.div>
 
+          {/* Version mobile : empilée */}
           <motion.div
-            className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+            className="grid gap-6 md:hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-120px" }}
@@ -234,6 +242,58 @@ export function About() {
                 </Card>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Version desktop : carrousel */}
+          <motion.div
+            className="hidden md:block"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-120px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {teamMembers.map((member) => (
+                  <CarouselItem key={member.name} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <Card className="h-full border-2 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl">
+                      <CardHeader className="flex items-center gap-4">
+                        <Avatar className="h-14 w-14 bg-gradient-to-br from-primary/40 to-primary ring-2 ring-primary/60 ring-offset-2 text-primary-foreground">
+                          <AvatarFallback className="text-base font-semibold uppercase">
+                            {member.name
+                              .split(" ")
+                              .map((part) => part[0])
+                              .slice(0, 2)
+                              .join("")
+                              .toUpperCase()}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <CardTitle className="font-heading text-xl">{member.name}</CardTitle>
+                          <CardDescription className="text-sm font-semibold text-primary">
+                            {member.role}
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-start gap-3 text-muted-foreground">
+                          <Quote className="mt-1 h-4 w-4 text-primary" />
+                          <p className="text-sm leading-relaxed">{member.description}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden lg:flex" />
+              <CarouselNext className="hidden lg:flex" />
+            </Carousel>
           </motion.div>
         </motion.div>
       </div>

@@ -26,8 +26,16 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Blue - Transformation Digitale & Solutions Numériques",
   description: "Votre partenaire en transformation digitale et solutions numériques",
+<<<<<<< HEAD
   icons: {
     icon: "/blue-logo.svg",
+=======
+  generator: 'v0.app',
+  icons: {
+    icon: '/blue-logo.svg',
+    shortcut: '/blue-logo.svg',
+    apple: '/blue-logo.svg',
+>>>>>>> dev
   },
 }
 
