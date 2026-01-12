@@ -8,7 +8,7 @@ export function Trusted() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden py-10 md:py-15">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
 
       <div className="container relative mx-auto px-4">
