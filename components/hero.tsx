@@ -112,7 +112,7 @@ export function Hero() {
       <div className="absolute left-1/4 top-1/4 z-[2] h-96 w-96 rounded-full bg-primary/10 blur-[128px]" />
       <div className="absolute bottom-1/4 right-1/4 z-[2] h-64 w-64 rounded-full bg-blue-600/10 blur-[100px]" />
 
-      <div className="container relative z-[10] mx-auto flex min-h-screen flex-col justify-center px-4 py-20">
+      <div className="container relative z-[10] mx-auto flex  flex-col justify-center px-4 py-10 md:py-15">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
           <motion.div
@@ -142,11 +142,11 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-5xl xl:text-6xl">
                 {t.hero.title}
               </h1>
               <div className="min-h-[3.5rem] md:min-h-[4.5rem]">
-                <span className="text-balance text-3xl font-bold text-primary md:text-4xl lg:text-5xl xl:text-6xl">
+                <span className="text-balance text-3xl font-bold text-primary md:text-5xl lg:text-3xl xl:text-5xl">
                   {displayText}
                   <span className="ml-1 inline-block h-8 w-[3px] animate-pulse rounded-full bg-primary align-middle md:h-12" />
                 </span>
@@ -279,10 +279,10 @@ export function Hero() {
                       +12
                     </div>
                   </div>
-                  <button className="group flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80">
+                  <Link href="/portfolio" className="group flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80">
                     Voir tous les projets
                     <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

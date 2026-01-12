@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/components/language-provider"
 import { useState } from "react"
+import Link from "next/link"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -169,13 +170,15 @@ export function Services() {
                   </ul>
 
                   {/* CTA Button */}
-                  <Button
-                    variant="ghost"
-                    className="group/btn p-0 h-auto font-medium text-muted-foreground hover:text-blue-400 transition-colors"
-                  >
-                    {t.services.learnMore}
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
-                  </Button>
+                  <Link href="/services">
+                    <Button
+                      variant="ghost"
+                      className="group/btn p-0 h-auto font-medium text-muted-foreground hover:text-blue-400 transition-colors"
+                    >
+                      {t.services.learnMore}
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             )
@@ -192,10 +195,12 @@ export function Services() {
         >
           <div className="inline-flex items-center gap-4 p-2 pl-6 rounded-full bg-muted/50 border border-border/50">
             <span className="text-sm text-muted-foreground">Besoin d'un service personnalisé ?</span>
-            <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white">
-              Contactez-nous
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/contact">
+              <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700 text-white">
+                Contactez-nous
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>

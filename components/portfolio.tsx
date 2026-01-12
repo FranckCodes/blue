@@ -364,7 +364,7 @@ export function Portfolio() {
                 </p>
               </div>
               <a
-                href="#contact"
+                href="/quote"
                 className="group inline-flex items-center  gap-3 px-8 py-4 bg-foreground text-background rounded-full font-semibold hover:bg-accent hover:text-foreground transition-colors duration-300 shrink-0"
               >
                 Demander un devis

@@ -2,6 +2,7 @@
 
 import { CreditCard, Smartphone, Building2, CheckCircle2, ArrowRight, Shield, Zap, Clock } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const paymentMethods = [
   {
@@ -265,10 +266,12 @@ export function Payment() {
               <h3 className="font-sans font-semibold text-xl md:text-2xl mb-2">Des questions sur le paiement ?</h3>
               <p className="text-muted-foreground">Notre équipe est disponible pour vous accompagner</p>
             </div>
-            <button className="group flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors">
-              Nous contacter
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link href="/contact">
+              <button className="group flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors">
+                Nous contacter
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>
