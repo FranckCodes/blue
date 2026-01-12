@@ -6,6 +6,7 @@ import { Sparkles, ArrowRight, Play, ChevronRight } from "lucide-react"
 
 import { useLanguage } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const typingPhrases = [
   "transformation digitale",
@@ -169,16 +170,18 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.7 }}
             >
-              <Button
-                size="lg"
-                className="group relative overflow-hidden bg-primary px-8 py-6 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:shadow-xl hover:shadow-primary/30"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  {t.hero.cta1}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-                <div className="absolute inset-0 -z-0 bg-gradient-to-r from-primary via-blue-500 to-primary bg-[length:200%_100%] transition-all group-hover:animate-shimmer" />
-              </Button>
+              <Link href="/quote">
+                <Button
+                  size="lg"
+                  className="group relative overflow-hidden bg-primary px-8 py-6 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:shadow-xl hover:shadow-primary/30"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    {t.hero.cta1}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 -z-0 bg-gradient-to-r from-primary via-blue-500 to-primary bg-[length:200%_100%] transition-all group-hover:animate-shimmer" />
+                </Button>
+              </Link>
 
               <Button
                 variant="ghost"

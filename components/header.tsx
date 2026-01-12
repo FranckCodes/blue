@@ -152,10 +152,12 @@ export function Header() {
             </motion.button>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.9 }}>
-              <Button className="font-sans">
-                {t.nav.getQuote}
-                <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
+              <Link href="/quote">
+                <Button className="font-sans">
+                  {t.nav.getQuote}
+                  <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
@@ -229,10 +231,12 @@ export function Header() {
                     visible: { opacity: 1, x: 0 },
                   }}
                 >
-                  <Button className="font-sans w-full">
-                    {t.nav.getQuote}
-                    <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Button>
+                  <Link href="/quote" className="block" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="font-sans w-full">
+                      {t.nav.getQuote}
+                      <ArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Button>
+                  </Link>
                 </motion.div>
               </motion.div>
             </motion.nav>
