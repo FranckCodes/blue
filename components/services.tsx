@@ -37,7 +37,7 @@ export function Services() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="services" className="relative  bg-background overflow-hidden">
+    <section id="services" className="relative  bg-background py-10 md:py-10 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
