@@ -353,14 +353,14 @@ function VideoPreview() {
         </DialogContent>
       </Dialog>
       <motion.div
-        className="absolute -bottom-6 -right-6 rounded-xl bg-primary p-6 text-primary-foreground shadow-lg"
+        className="absolute -bottom-6 -right-6 rounded-xl bg-primary p-6 text-primary-foreground shadow-lg hidden md:block"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
       >
-        <div className="font-sans text-3xl font-bold">16+</div>
-        <div className="text-sm opacity-90">Années d'expérience</div>
+        <div className="font-sans text-3xl font-bold">5+</div>
+        <div className="text-sm opacity-90">Ans d'expérience</div>
       </motion.div>
     </motion.div>
   )

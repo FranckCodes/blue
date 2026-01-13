@@ -23,7 +23,8 @@ export function Header() {
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
+          {/* Desktop: affiche tout en ligne */}
+          <div className="hidden md:flex flex-wrap items-center justify-between gap-4 text-sm">
             <div className="flex flex-wrap items-center gap-4">
               <a href="tel:+243000000000" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <Phone className="h-4 w-4" />
@@ -38,7 +39,15 @@ export function Header() {
                 <span>Kinshasa, {language === "fr" ? "RDC" : "DRC"}</span>
               </div>
             </div>
-            <div className="flex md:hidden items-center gap-2">
+          </div>
+
+          {/* Mobile: adresse à gauche, dark mode + menu à droite */}
+          <div className="flex md:hidden items-center justify-between text-sm">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <span>Kinshasa, {language === "fr" ? "RDC" : "DRC"}</span>
+            </div>
+            <div className="flex items-center gap-2">
               <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-secondary transition-colors">
                 {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               </button>
