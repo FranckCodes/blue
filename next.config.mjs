@@ -1,16 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ce que tu avais déjà
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
-  images: { unoptimized: true },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
 
-  // clé pour réduire la conso mémoire en prod
-  output: 'standalone',
+  // 🔴 Clé pour générer un site 100% statique
+  output: 'export',
 
   experimental: {
-    serverActions: { bodySizeLimit: '10mb' } // ajuste si besoin
-  }
+    serverActions: { bodySizeLimit: '10mb' },
+  },
 };
 
 export default nextConfig;

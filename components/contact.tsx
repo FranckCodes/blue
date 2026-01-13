@@ -78,8 +78,8 @@ export function Contact() {
                   {
                     icon: Mail,
                     title: "Email",
-                    content: "contact@blue.com",
-                    href: "mailto:contact@blue.com",
+                    content: "info@bluerdc.com",
+                    href: "mailto:info@bluerdc.com",
                   },
                   {
                     icon: Phone,
@@ -125,7 +125,7 @@ export function Contact() {
                 </p>
                 <div className="flex w-full flex-wrap gap-3">
                   <Button asChild variant="default" className="flex-1 min-w-[180px] font-sans">
-                    <a href="mailto:contact@blue.com">Écrire un email</a>
+                    <a href="mailto:info@bluerdc.com">Écrire un email</a>
                   </Button>
                   <Button asChild variant="outline" className="flex-1 min-w-[180px] border-primary/40 text-primary">
                     <a href="tel:+243000000000">Appeler maintenant</a>

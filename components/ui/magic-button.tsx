@@ -23,7 +23,7 @@ export const MagicButton = forwardRef<HTMLButtonElement, MagicButtonProps>(
       icon: Icon,
       textClassName,
       active = false,
-      variant = "primary",
+      variant = "ghost",
       style,
       ...props
     },
@@ -32,8 +32,12 @@ export const MagicButton = forwardRef<HTMLButtonElement, MagicButtonProps>(
     const mergedStyle: MagicButtonStyle = {
       ...(style as MagicButtonStyle | undefined),
     }
-    if (active && variant === "primary") {
+    const hasNoHover = className?.includes("magic-button--no-hover")
+    if (active && variant === "primary" && !hasNoHover) {
       mergedStyle["--active"] = 1
+    }
+    if (hasNoHover) {
+      mergedStyle["--active"] = 0
     }
 
     return (

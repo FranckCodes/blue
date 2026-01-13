@@ -187,8 +187,8 @@ export function About() {
             <Image
               src="/team_presentation.png"
               alt="Équipe Blue"
-              width={1600}
-              height={1180}
+              width={1200}
+              height={885}
               className="relative h-full w-full object-cover"
               priority
             />
@@ -218,7 +218,7 @@ export function About() {
               >
                 <Card className="h-full border-2 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl">
                   <CardHeader className="flex items-center gap-4">
-                    <Avatar className="h-14 w-14 bg-gradient-to-br from-primary/40 to-primary ring-2 ring-primary/60 ring-offset-2 text-primary-foreground">
+                    <Avatar className="h-10 w-10 bg-gradient-to-br from-primary/40 to-primary ring-2 ring-primary/60 ring-offset-2 text-primary-foreground">
                       <AvatarFallback className="text-base font-semibold uppercase">
                         {member.name
                           .split(" ")
